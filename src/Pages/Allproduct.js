@@ -9,15 +9,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button, Col, Modal, Row, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import axiosClient from "../Component/axiosClient";
 
 const Allproduct = () => {
   const [products, setproducts] = useState([]);
   const [selectedProducts, setselectedProducts] = useState({});
 
   useEffect(() => {
-    axios
-      .get("https://localhost:7174/api/Products  ") //đường dẫn api bỏ vô
-      .then((res) => setproducts(res.data));
+    axiosClient.get('/products').then(res => setproducts(res.data));
   }, []);
   //Trangj thai m,odel
   const [show, setShow] = useState(false);
