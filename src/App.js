@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+    BrowserRouter,
+    Routes,
+    Route
+  } from "react-router-dom";
+  import { render } from "react-dom";
+import Layout from "./Pages/Layout";
+import Home from "./Pages/Home";
+import Allproduct from "./Pages/Allproduct";
+import ProductDetail from "./Pages/ProductDetails";
+import ProductAdd from "./Pages/ProductAdd";
+import Login from "./Pages/Login";
+const App = () => {
+    return (
+        <BrowserRouter>
+            <Routes>
+            <Route path="/" element={<Layout/>} >
+            <Route path="login" element={<Login/>} />
+                <Route index element={<Home/>} />
+                <Route path="products" element={<Allproduct/>} />
+                
+                <Route path="products/details/:id" element={<ProductDetail/>} />
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+                <Route path="products/add" element={<ProductAdd/>} />
+
+
+                
+            </Route>
+
+            {/* <Route path="/admin/" element={<LayoutAdmin/>}>
+                <Route path="accounts" element={<Accounts/>} />
+            </Route> */}
+
+            </Routes>
+
+
+            
+        </BrowserRouter>
+    );
 }
 
 export default App;
