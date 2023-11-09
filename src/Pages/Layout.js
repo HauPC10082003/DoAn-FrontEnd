@@ -13,7 +13,8 @@ const Layout = () => {
   };
   return (
     <>
-      
+      <div class="top-banner-block">
+            <p><a href="https://www.fahasa.com/dinh-ti?fhs_campaign=topbanner"><img src="https://cdn0.fahasa.com/media/wysiwyg/Thang-11-2023/NCCDinhTiT1131_Header_1263x60.jpg" alt=""/></a></p>        </div>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" >
