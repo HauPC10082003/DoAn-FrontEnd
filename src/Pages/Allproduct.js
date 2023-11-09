@@ -1,6 +1,7 @@
 import {
   faDeleteLeft,
   faEdit,
+  faPlus,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -30,6 +31,9 @@ const Allproduct = () => {
   };
   return (
     <>
+            <Link to="" className="btn btn-success mb-2">
+                <FontAwesomeIcon icon={faPlus} /> Thêm
+            </Link>
       <Table>
         <thead>
           <tr>
@@ -59,7 +63,7 @@ const Allproduct = () => {
                     border: "1px solid #ccc", // Đường viền 1 pixel màu xám
                     borderRadius: "5px", // Góc bo tròn 5 pixel
                   }}
-                  src={"https://localhost:7283/images/product/" + item.image}
+                  src={"https://localhost:7174/images/product/" + item.image}
                   alt={`Product Image`}
                 />
 
@@ -101,7 +105,7 @@ const Allproduct = () => {
             <Col md={4}>
               <img
                     
-                    src={"https://localhost:7283/images/product/" +selectedProducts.image}
+                    src={"https://localhost:7174/images/product/" +selectedProducts.image}
                     className="w-100"
                     
                   />
@@ -123,7 +127,7 @@ const Allproduct = () => {
             <Col md={4}>
               <dl>
                 <dt>Product Name:</dt>
-                <dd>{selectedProducts.title}</dd>
+                <dd>{selectedProducts.name}</dd>
 
                 <dt>DESCRIPTION:</dt>
                 <dd>{selectedProducts.description}</dd>
@@ -133,11 +137,15 @@ const Allproduct = () => {
                 <dd>{selectedProducts.discountPercentage}</dd>
                 <dt>STOCK:</dt>
                 <dd>{selectedProducts.stock}</dd>
-                <dt>BRAND:</dt>
-                <label>{selectedProducts.brand}</label>
+                
               </dl>
             </Col>
-            <Col md={4}></Col>
+            <Col md={4}>
+              <dl>
+                  <dt>Content:</dt>
+                  <label>{selectedProducts.content}</label>
+              </dl>
+            </Col>
           </Row>
         </Modal.Body>
         <Modal.Footer>
