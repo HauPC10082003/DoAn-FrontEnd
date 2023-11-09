@@ -1,48 +1,47 @@
 .slideshow
 {
     margin-left: 17%;
-    
 }
 
-.footer1
+.footer-background
 {
     background-color: #1c2331
 }
 
-.footer2
-{
-    background-color: #6351ce
-}
-
-.footer3
+.footer-shop
 {
     width: 60px; 
     background-color: #7c4dff; 
     height: 2px;
 }
 
-.footer4
+.footer-product
 {
     width: 60px; 
     background-color: #7c4dff; 
     height: 2px;
 }
 
-.footer5
+.footer-usefull
 {
     width: 60px; 
     background-color: #7c4dff; 
     height: 2px;
 }
 
-.footer6
+.footer-contact
 {
     width: 60px; 
     background-color: #7c4dff; 
     height: 2px;
 }
 
-.footer7
+.footer-end
 {
     background-color: rgba(0, 0, 0, 0.2);
+}
+
+.login
+{
+    margin-top: 50px;
 }
