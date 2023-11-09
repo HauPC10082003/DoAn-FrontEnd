@@ -1,151 +1,236 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { Button,Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import axiosClient from "../Component/axiosClient";
 
 const Login = () => {
-    const[account,setAccount]   = useState({});
-    const handleChange = (e) => {
-        let name = e.target.name;
-        let value = e.target.value;
-        setAccount(prev => ({ ...prev, [name]: value }));
-    }
+  const [account, setAccount] = useState({});
+  const handleChange = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+    setAccount((prev) => ({ ...prev, [name]: value }));
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        axiosClient.post(`/login`, account)
-            .then(res => localStorage.setItem("jwt",res.data.token));
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axiosClient
+      .post(`/login`, account)
+      .then((res) => localStorage.setItem("jwt", res.data.token));
+  };
 
-    return (
-        <>
-            <ul class="nav nav-pills nav-justified mb-3 login" id="ex1" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="tab-login" data-mdb-toggle="pill" href="#pills-login" role="tab"
-                    aria-controls="pills-login" aria-selected="true">Login</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="tab-register" data-mdb-toggle="pill" href="#pills-register" role="tab"
-                    aria-controls="pills-register" aria-selected="false">Register</a>
-                </li>
-            </ul>
+  return (
+    <>
+      <ul
+        class="nav nav-pills nav-justified mb-3 login"
+        id="ex1"
+        role="tablist"
+      >
+        <li class="nav-item" role="presentation">
+          <a
+            class="nav-link active"
+            id="tab-login"
+            data-mdb-toggle="pill"
+            href="#pills-login"
+            role="tab"
+            aria-controls="pills-login"
+            aria-selected="true"
+          >
+            Login
+          </a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a
+            class="nav-link"
+            id="tab-register"
+            data-mdb-toggle="pill"
+            href="#pills-register"
+            role="tab"
+            aria-controls="pills-register"
+            aria-selected="false"
+          >
+            Register
+          </a>
+        </li>
+      </ul>
 
-        <div class="tab-content">
-        <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-            <form>
+      <div class="tab-content">
+        <div
+          class="tab-pane fade show active"
+          id="pills-login"
+          role="tabpanel"
+          aria-labelledby="tab-login"
+        >
+          <form>
             <div class="text-center mb-3">
-                <p>Sign in with:</p>
-                <button type="button" class="btn btn-link btn-floating mx-1">
+              <p>Sign in with:</p>
+              <button type="button" class="btn btn-link btn-floating mx-1">
                 <i class="fab fa-facebook-f"></i>
-                </button>
+              </button>
 
-                <button type="button" class="btn btn-link btn-floating mx-1">
+              <button type="button" class="btn btn-link btn-floating mx-1">
                 <i class="fab fa-google"></i>
-                </button>
+              </button>
 
-                <button type="button" class="btn btn-link btn-floating mx-1">
+              <button type="button" class="btn btn-link btn-floating mx-1">
                 <i class="fab fa-twitter"></i>
-                </button>
+              </button>
 
-                <button type="button" class="btn btn-link btn-floating mx-1">
+              <button type="button" class="btn btn-link btn-floating mx-1">
                 <i class="fab fa-github"></i>
-                </button>
+              </button>
             </div>
 
             <p class="text-center">or:</p>
+            <Form className="COL-MD-3">
+              <div class="form-outline mb-4">
+                <Form.Group className="mb-3">
+                  <Form.Label>Tên đăng nhập</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="username"
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+              </div>
 
-            <div class="form-outline mb-4">
-                <input type="email" id="loginName" class="form-control" />
-                <label class="form-label" for="loginName">Email or username</label>
-            </div>
+              <div class="form-outline mb-4">
+                <Form.Group className="mb-3">
+                  <Form.Label>Mật khẩu</Form.Label>
+                  <Form.Control
+                    type="password"
+                    name="password"
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+              </div>
 
-            <div class="form-outline mb-4">
-                <input type="password" id="loginPassword" class="form-control" />
-                <label class="form-label" for="loginPassword">Password</label>
-            </div>
-
-            <div class="row mb-4">
+              <div class="row mb-4">
                 <div class="col-md-6 d-flex justify-content-center">
-                <div class="form-check mb-3 mb-md-0">
-                    <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
-                    <label class="form-check-label" for="loginCheck"> Remember me </label>
-                </div>
+                  <div class="form-check mb-3 mb-md-0">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="loginCheck"
+                      checked
+                    />
+                    <label class="form-check-label" for="loginCheck">
+                      {" "}
+                      Remember me{" "}
+                    </label>
+                  </div>
                 </div>
 
                 <div class="col-md-6 d-flex justify-content-center">
-                <a href="#!">Forgot password?</a>
+                  <a href="#!">Forgot password?</a>
                 </div>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
-
+              </div>
+              <Button type="submit" variant="success" onclick={handleSubmit}>
+                <FontAwesomeIcon icon={faCheck} />
+                Đăng nhập
+              </Button>
+            </Form>
             <div class="text-center">
-                <p>Not a member? <a href="#!">Register</a></p>
+              <p>
+                Not a member? <a href="#!">Register</a>
+              </p>
             </div>
-            </form>
+          </form>
         </div>
-        <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-            <form>
+        <div
+          class="tab-pane fade"
+          id="pills-register"
+          role="tabpanel"
+          aria-labelledby="tab-register"
+        >
+          <form>
             <div class="text-center mb-3">
-                <p>Sign up with:</p>
-                <button type="button" class="btn btn-link btn-floating mx-1">
+              <p>Sign up with:</p>
+              <button type="button" class="btn btn-link btn-floating mx-1">
                 <i class="fab fa-facebook-f"></i>
-                </button>
+              </button>
 
-                <button type="button" class="btn btn-link btn-floating mx-1">
+              <button type="button" class="btn btn-link btn-floating mx-1">
                 <i class="fab fa-google"></i>
-                </button>
+              </button>
 
-                <button type="button" class="btn btn-link btn-floating mx-1">
+              <button type="button" class="btn btn-link btn-floating mx-1">
                 <i class="fab fa-twitter"></i>
-                </button>
+              </button>
 
-                <button type="button" class="btn btn-link btn-floating mx-1">
+              <button type="button" class="btn btn-link btn-floating mx-1">
                 <i class="fab fa-github"></i>
-                </button>
+              </button>
             </div>
 
             <p class="text-center">or:</p>
 
             <div class="form-outline mb-4">
-                <input type="text" id="registerName" class="form-control" />
-                <label class="form-label" for="registerName">Name</label>
+              <input type="text" id="registerName" class="form-control" />
+              <label class="form-label" for="registerName">
+                Name
+              </label>
             </div>
 
             <div class="form-outline mb-4">
-                <input type="text" id="registerUsername" class="form-control" />
-                <label class="form-label" for="registerUsername">Username</label>
+              <input type="text" id="registerUsername" class="form-control" />
+              <label class="form-label" for="registerUsername">
+                Username
+              </label>
             </div>
 
             <div class="form-outline mb-4">
-                <input type="email" id="registerEmail" class="form-control" />
-                <label class="form-label" for="registerEmail">Email</label>
+              <input type="email" id="registerEmail" class="form-control" />
+              <label class="form-label" for="registerEmail">
+                Email
+              </label>
             </div>
 
             <div class="form-outline mb-4">
-                <input type="password" id="registerPassword" class="form-control" />
-                <label class="form-label" for="registerPassword">Password</label>
+              <input
+                type="password"
+                id="registerPassword"
+                class="form-control"
+              />
+              <label class="form-label" for="registerPassword">
+                Password
+              </label>
             </div>
 
             <div class="form-outline mb-4">
-                <input type="password" id="registerRepeatPassword" class="form-control" />
-                <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+              <input
+                type="password"
+                id="registerRepeatPassword"
+                class="form-control"
+              />
+              <label class="form-label" for="registerRepeatPassword">
+                Repeat password
+              </label>
             </div>
 
             <div class="form-check d-flex justify-content-center mb-4">
-                <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
-                aria-describedby="registerCheckHelpText" />
-                <label class="form-check-label" for="registerCheck">
+              <input
+                class="form-check-input me-2"
+                type="checkbox"
+                value=""
+                id="registerCheck"
+                checked
+                aria-describedby="registerCheckHelpText"
+              />
+              <label class="form-check-label" for="registerCheck">
                 I have read and agree to the terms
-                </label>
+              </label>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
-            </form>
+            <button type="submit" class="btn btn-primary btn-block mb-3">
+              Sign in
+            </button>
+          </form>
         </div>
-</div>
-        </>
-    )
-}
+      </div>
+    </>
+  );
+};
 
 export default Login;
