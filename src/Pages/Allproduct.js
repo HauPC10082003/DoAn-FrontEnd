@@ -1,11 +1,9 @@
 import {
   faDeleteLeft,
-  faEdit,
   faPlus,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button, Col, Modal, Row, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -63,7 +61,7 @@ const Allproduct = () => {
                     borderRadius: "5px", // Góc bo tròn 5 pixel
                   }}
                   src={"https://localhost:7174/images/product/" + item.image}
-                  alt={`Product Image`}
+                  alt="Ảnh minh họa"
                 />
 
                 <td>
@@ -103,10 +101,8 @@ const Allproduct = () => {
           <Row>
             <Col md={4}>
               <img
-                    
-                    src={"https://localhost:7174/images/product/" +selectedProducts.image}
+                    src={"https://localhost:7174/images/product/" +selectedProducts.image} alt="Ảnh minh họa"
                     className="w-100"
-                    
                   />
               {/* {selectedProducts &&
               selectedProducts.images &&
