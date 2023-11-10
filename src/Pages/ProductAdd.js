@@ -4,21 +4,21 @@ import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 const ProductAdd = () => {
-    const [account, setAccount] = useState({});
+    const [product, setProducts] = useState({});
 
     const navigate = useNavigate();
 
     const handleChange = (e) => {
         let name = e.target.name;
         let value = e.target.value;
-        setAccount(prev => ({ ...prev, [name]: value }));
+        setProducts(prev => ({ ...prev, [name]: value }));
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post(`https://localhost:7174/api/Products`, account)
+        axios.post(`https://localhost:7174/api/Products`, product)
             .then(() => {
-                navigate("/account");
+                navigate("/products");
             });
     }
 
@@ -26,24 +26,36 @@ const ProductAdd = () => {
         <>
             <Form className="col-md-4" onSubmit={handleSubmit}>
                 <Form.Group>
-                    <Form.Label>Tên:</Form.Label>
+                    <Form.Label>SKU:</Form.Label>
+                    <Form.Control type="text" name="sku" onChange={handleChange} />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Tên Sản Phẩm:</Form.Label>
                     <Form.Control type="text" name="name" onChange={handleChange} />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Tác giả:</Form.Label>
+                    <Form.Control type="text" name="description" onChange={handleChange} />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Giá:</Form.Label>
                     <Form.Control type="text" name="price" onChange={handleChange} />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Discount:</Form.Label>
-                    <Form.Control type="text" name="discount" onChange={handleChange} />
+                    <Form.Label>Tồn Kho:</Form.Label>
+                    <Form.Control type="text" name="stock" onChange={handleChange} />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Stock:</Form.Label>
-                    <Form.Control type="text" name="Stock" onChange={handleChange} />
+                    <Form.Label>Image:</Form.Label>
+                    <Form.Control type="file" name="image" onChange={handleChange} />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>IsAdmin:</Form.Label>
-                    <Form.Control type="switch" name="isadmin" onChange={handleChange} />
+                    <Form.Label>Status:</Form.Label>
+                    <Form.Control type="text" name="status" onChange={handleChange} />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Content:</Form.Label>
+                    <Form.Control type="text" name="content" onChange={handleChange} />
                 </Form.Group>
                 <div className="mt-2">
                     <Button type="submit" variant="success">Thêm</Button>
