@@ -3,7 +3,6 @@ import {
     Routes,
     Route
   } from "react-router-dom";
-  import { render } from "react-dom";
 import Layout from "./Pages/Layout";
 import Home from "./Pages/Home";
 import Allproduct from "./Pages/Allproduct";
