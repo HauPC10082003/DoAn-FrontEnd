@@ -28,7 +28,7 @@ const Allproduct = () => {
   };
   return (
     <>
-            <Link to="" className="btn btn-success mb-2">
+            <Link to="/products/add" className="btn btn-success mb-2">
                 <FontAwesomeIcon icon={faPlus} /> Thêm
             </Link>
       <Table>

@@ -57,6 +57,12 @@ a{
     text-decoration: none;
 }
 
+a:hover
+{
+    text-decoration: none;
+    color: red;
+}
+
 .buttonlogin{
     display: flex;
     justify-content: center;
