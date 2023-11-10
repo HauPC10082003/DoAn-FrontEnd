@@ -3,8 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import axiosClient from "../Component/axiosClient";
-
+import { useNavigate } from "react-router-dom";
 const Login = () => {
+  const navigate = useNavigate();
   const [account, setAccount] = useState({});
   const handleChange = (e) => {
     setAccount((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -14,7 +15,10 @@ const Login = () => {
     e.preventDefault();
     axiosClient
       .post(`/Users/login`, account)
-      .then((res) => localStorage.setItem("jwt", res.data.token));
+      .then((res) => localStorage.setItem("jwt", res.data.token))
+      .then(() => {
+        navigate("/products");
+    });
   };
 
   return (
@@ -33,11 +37,12 @@ const Login = () => {
             onChange={handleChange}
           />
         </Form.Group>
-
+        <Form.Group className="mb-3 buttonlogin">
         <Button type="submit" variant="success" onClick={handleSubmit}>
           <FontAwesomeIcon icon={faCheck} />
           Đăng nhập
         </Button>
+        </Form.Group>
       </Form>
     </>
   );

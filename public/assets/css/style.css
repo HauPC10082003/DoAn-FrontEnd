@@ -56,3 +56,8 @@ a{
     color: #1c2331;
     text-decoration: none;
 }
+
+.buttonlogin{
+    display: flex;
+    justify-content: center;
+}
