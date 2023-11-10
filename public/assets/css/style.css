@@ -61,3 +61,34 @@ a{
     display: flex;
     justify-content: center;
 }
+
+
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; /* Khoảng cách giữa các grid item */
+  }
+  
+  .grid-item {
+    border: 1px solid #ccc;
+    padding: 16px;
+    border-radius: 5px;
+    width: calc(25% - 16px); /*Định nghĩa chiều rộng của mỗi grid item (độ rộng 33.33% với khoảng cách 16px) */
+    box-sizing: border-box;
+  }
+  
+  .grid-cell {
+    margin-bottom: 8px; /* Khoảng cách giữa các dòng trong grid cell */
+  }
+  
+  .grid-image {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .btn {
+    margin-right: 8px; /* Khoảng cách giữa các nút */
+  }
+  

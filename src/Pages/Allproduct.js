@@ -32,65 +32,39 @@ const Allproduct = () => {
                 <FontAwesomeIcon icon={faPlus} /> Thêm
             </Link>
       <Table>
-        <thead>
-          <tr>
-            <th>SKU</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Stock</th>
-            <th>Image</th>
-            <th>Functions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((item) => {
-            return (
-              <tr>
-                <td>{item.sku}</td>
-                <td>{item.name}</td>
-                <td>{item.description}</td>
-                <td>{item.price}</td>
-                <td>{item.stock}</td>
-                <img
-                 
-                  style={{
-                    width: "100px", // Đặt chiều rộng thành 100%
-                    height: "auto", // Đảm bảo tỷ lệ khung hình không bị biến đổi
-                    border: "1px solid #ccc", // Đường viền 1 pixel màu xám
-                    borderRadius: "5px", // Góc bo tròn 5 pixel
-                  }}
-                  src={"https://localhost:7174/images/product/" + item.image}
-                  alt="Ảnh minh họa"
-                />
-
-                <td>
-                {/* <Link to={`details/${item.id}`}> */}
-                  <Button
-                    variant="btn btn-info"
-                     onClick={() => handleShow(item)}
-                  >
-                    {" "}
-                    <FontAwesomeIcon icon={faUser} />
-                  </Button>
-                  {/* </Link> */}
-
-                  <Button variant="btn btn-success" onClick={() => handleShow(item)}>
-                    {" "}
-                    Edit
-                  </Button>
-                  <Button
-                    variant="btn btn-danger"
-                    onClick={() => handleShow(item)}
-                  >
-                    {" "}
-                    <FontAwesomeIcon icon={faDeleteLeft} />
-                  </Button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
+        <div>
+          <div className="grid-container">
+              {products.map((item) => {
+                return (
+                  
+                  <div className="grid-item" key={item.sku}>
+                    <img
+                      className="grid-image"
+                      src={"https://localhost:7174/images/product/" + item.image}
+                      alt="Ảnh minh họa"
+                    />
+                    <div className="grid-cell">SKU: {item.sku}</div>
+                    <div className="grid-cell">Name: {item.name}</div>
+                    <div className="grid-cell">Description: {item.description}</div>
+                    <div className="grid-cell">Price: {item.price}</div>
+                    <div className="grid-cell">Stock: {item.stock}</div>
+                    
+                    <div className="grid-cell">
+                      <button className="btn btn-info" onClick={() => handleShow(item)}>
+                        <FontAwesomeIcon icon={faUser} />
+                      </button>
+                      <button className="btn btn-success" onClick={() => handleShow(item)}>
+                        Edit
+                      </button>
+                      <button className="btn btn-danger" onClick={() => handleShow(item)}>
+                        <FontAwesomeIcon icon={faDeleteLeft} />
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+          </div>
+        </div>
       </Table>
 
       <Modal show={show} onHide={handleClose}>
