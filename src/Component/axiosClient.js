@@ -12,15 +12,12 @@ const axiosClient = axios.create({
 axiosClient.interceptors.response.use(
     res => res,
     error => {
-        console.log(error);
-        if (error.response.status == 401) {
+        if (error.response.status === 401) {
             window.location.href = `http://localhost:3000/login`;
         }
-        
         console.error(`Error! Status Code: ` + error.response.status);
         return Promise.reject(error);
     }
-       
 );
 
 export default axiosClient;

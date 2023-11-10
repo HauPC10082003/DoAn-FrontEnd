@@ -12,11 +12,10 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+     console.log(account);
     axiosClient
       .post(`/Users/login`, account)
       .then((res) => localStorage.setItem("jwt", res.data.token));
-
-      
   };
 
   return (
