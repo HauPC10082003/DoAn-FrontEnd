@@ -1,7 +1,8 @@
-import axios from "axios";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+//import axiosClient from "../Component/axiosClient";
+import axios from "axios";
 
 const ProductAdd = () => {
     const [product, setProducts] = useState({});
@@ -16,7 +17,7 @@ const ProductAdd = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post(`https://localhost:7174/api/Products`, product)
+        axios.post(`https://localhost:7174/api/products`, product)
             .then(() => {
                 navigate("/products");
             });
