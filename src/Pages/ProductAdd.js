@@ -3,6 +3,8 @@ import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 //import axiosClient from "../Component/axiosClient";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const ProductAdd = () => {
     const [product, setProducts] = useState({});
@@ -18,14 +20,12 @@ const ProductAdd = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post(`https://localhost:7174/api/products`, product)
-            .then(() => {
-                navigate("/products");
-            });
+            .then(() => navigate("/products"));
     }
 
     return (
         <>
-            <Form className="col-md-4" onSubmit={handleSubmit}>
+            <Form className="col-md-4" onSubmit={handleSubmit} encType="multipart/form-data">
                 <Form.Group>
                     <Form.Label>SKU:</Form.Label>
                     <Form.Control type="text" name="sku" onChange={handleChange} />
@@ -47,8 +47,12 @@ const ProductAdd = () => {
                     <Form.Control type="text" name="stock" onChange={handleChange} />
                 </Form.Group>
                 <Form.Group>
+                    <Form.Label>Loại:</Form.Label>
+                    <Form.Control type="text" name="producttypeid" onChange={handleChange} />
+                </Form.Group>
+                <Form.Group>
                     <Form.Label>Image:</Form.Label>
-                    <Form.Control type="file" name="image" onChange={handleChange} />
+                    <Form.Control type="file" name="image" />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Status:</Form.Label>
@@ -58,9 +62,9 @@ const ProductAdd = () => {
                     <Form.Label>Content:</Form.Label>
                     <Form.Control type="text" name="content" onChange={handleChange} />
                 </Form.Group>
-                <div className="mt-2">
-                    <Button type="submit" variant="success">Thêm</Button>
-                </div>
+                <Button type="submit" variant="success" onClick={handleSubmit} style={{marginTop : '10px'}}>
+                    <FontAwesomeIcon icon={faPlus}/> Thêm
+                </Button>
             </Form>
         </>
     );
