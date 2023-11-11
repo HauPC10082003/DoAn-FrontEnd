@@ -44,7 +44,7 @@ const ProductAdd = () => {
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Tác giả:</Form.Label>
-                    <Form.Control type="text" name="description" onChange={handleChange} />
+                    <Form.Control type="text" name="author" onChange={handleChange} />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Giá:</Form.Label>

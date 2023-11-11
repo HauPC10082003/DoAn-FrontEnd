@@ -17,9 +17,9 @@ const Layout = () => {
             <p><a href="https://www.fahasa.com/dinh-ti?fhs_campaign=topbanner"><img src="https://cdn0.fahasa.com/media/wysiwyg/Thang-11-2023/NCCDinhTiT1131_Header_1263x60.jpg" alt=""/></a></p>        </div>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" >
+          <p class="navbar-brand" >
             BookStore
-          </a>
+          </p>
           <button
             class="navbar-toggler"
             type="button"
@@ -34,18 +34,18 @@ const Layout = () => {
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page">
+                <p class="nav-link active" aria-current="page">
                   <Link to="/">Home</Link>
-                </a>
+                </p>
               </li>
               <li class="nav-item">
-                <a class="nav-link">
+                <p class="nav-link">
                   {" "}
                   <Link to="/products">Products</Link>
-                </a>
+                </p>
               </li>
               <li class="nav-item dropdown">
-                <a
+                <p
                   class="nav-link dropdown-toggle"
                   href="#"
                   id="navbarDropdown"
@@ -54,37 +54,37 @@ const Layout = () => {
                   aria-expanded="false"
                 >
                   Dropdown
-                </a>
+                </p>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
-                    <a class="dropdown-item" href="#">
+                    <p class="dropdown-item" href="#">
                       Action
-                    </a>
+                    </p>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#">
+                    <p class="dropdown-item" href="#">
                       Another action
-                    </a>
+                    </p>
                   </li>
                   <li>
                     <hr class="dropdown-divider" />
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#">
+                    <p class="dropdown-item" href="#">
                       Something else here
-                    </a>
+                    </p>
                   </li>
                 </ul>
               </li>
               <li class="nav-item">
-                <a
+                <p
                   class="nav-link disabled"
                   href="#"
                   tabindex="-1"
                   aria-disabled="true"
                 >
                   Disabled
-                </a>
+                </p>
               </li>
             </ul>
             <form class="d-flex">
@@ -101,7 +101,7 @@ const Layout = () => {
           </div>
         </div>
       </nav>
-
+      
       <Slider {...settings}>
         <div className="slideshow">
           <img src="/assets/images/slide_1.jpg" alt="Slide 1" />
@@ -119,7 +119,22 @@ const Layout = () => {
           <img src="/assets/images/slide_5.jpg" alt="Slide 5" />
         </div>
       </Slider>
-
+      <div class="container" style={{marginBottom:'10px'}}>
+        <div class="row" >
+          <div class="col-3">
+            <img src="https://cdn0.fahasa.com/media/wysiwyg/Thang-11-2023/11Mot_Smallbanner_310x210.png" alt="Ảnh minh họa 1" />
+          </div>
+          <div class="col-3">
+            <img src="https://cdn0.fahasa.com/media/wysiwyg/Thang-11-2023/TrangThieuNhiT923_Banner_SmallBanner_310x210-22_1.png" alt="Ảnh minh họa 2" />
+          </div>
+          <div class="col-3">
+            <img src="https://cdn0.fahasa.com/media/wysiwyg/Thang-11-2023/20_11_mainbanner_Smallbanner_310x210.png" alt="Ảnh minh họa 3" />
+          </div>
+          <div class="col-3">
+            <img src="https://cdn0.fahasa.com/media/wysiwyg/Thang-11-2023/TopSanPhamT1023_Banner_SmallBanner_310x210.png" alt="Ảnh minh họa 4" />
+          </div>
+        </div>
+      </div>
       <Outlet />
 
   <div class="container my-5">
@@ -135,22 +150,22 @@ const Layout = () => {
         </div>
 
         <div>
-          <a href="" class="text-white me-4">
+          <a href="facebook.com" class="text-white me-4">
             <i class="fab fa-facebook-f"></i>
           </a>
-          <a href="" class="text-white me-4">
+          <a href="twitter.com" class="text-white me-4">
             <i class="fab fa-twitter"></i>
           </a>
-          <a href="" class="text-white me-4">
+          <a href="google.com" class="text-white me-4">
             <i class="fab fa-google"></i>
           </a>
-          <a href="" class="text-white me-4">
+          <a href="instagram.com" class="text-white me-4">
             <i class="fab fa-instagram"></i>
           </a>
-          <a href="" class="text-white me-4">
+          <a href="linkedin.com" class="text-white me-4">
             <i class="fab fa-linkedin"></i>
           </a>
-          <a href="" class="text-white me-4">
+          <a href="github.com" class="text-white me-4">
             <i class="fab fa-github"></i>
           </a>
         </div>

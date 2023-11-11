@@ -48,7 +48,7 @@ const ProductEdit = () => {
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Tác giả:</Form.Label>
-                    <Form.Control type="text" name="description" value={product.description} onChange={handleChange} />
+                    <Form.Control type="text" name="author" value={product.author} onChange={handleChange} />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Giá:</Form.Label>

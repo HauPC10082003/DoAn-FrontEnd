@@ -1,6 +1,8 @@
 import {
+  faCheck,
   faEdit,
   faPlus,
+  faTimes,
   faTrash,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
@@ -12,24 +14,35 @@ import axiosClient from "../Component/axiosClient";
 
 const Allproduct = () => {
   const [products, setproducts] = useState([]);
-  const [selectedProducts, setselectedProducts] = useState({});
+  const [selectedProducts, setSelectedProducts] = useState({});
 
   useEffect(() => {
     axiosClient.get("/products").then((res) => setproducts(res.data));
   }, []);
-  //Trangj thai m,odel
+  //Trạng thái model tất cả sản phẩm
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = (user) => {
     setShow(true);
-    setselectedProducts(user);
+    setSelectedProducts(user);
 
     console.log(user);
   };
+  //Trạng thái model xóa sản phẩm
+  const [showDelete,setShowDelete] = useState( false);
+  const handleShowDelete =(id) =>
+  {
+    setSelectedProducts(products.find(a => a.id === id))
+    setShowDelete(true);
+  }
+
+  const handleCloseDelete = () => setShowDelete(false);
+
 
   const handleDelete = (id) => {
-    axiosClient.delete(`/products/${id}`);
+    axiosClient.delete(`/products/${selectedProducts.id}`);
+    setShowDelete(false);
   };
 
   return (
@@ -64,6 +77,7 @@ const Allproduct = () => {
                     }).format(item.price * 1.5)}
                   </span>
 
+
                   <div className="grid-cell">
                     <Button
                       className="btn btn-info"
@@ -79,7 +93,7 @@ const Allproduct = () => {
                     </Link>
                     <Button
                       variant="danger"
-                      onClick={() => handleDelete(item.id)}
+                      onClick={() => handleShowDelete(item.id)}
                     >
                       <FontAwesomeIcon icon={faTrash} />
                     </Button>
@@ -145,6 +159,20 @@ const Allproduct = () => {
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <Modal show={showDelete} onHide={handleCloseDelete}>
+        <Modal.Header closeButton>
+          <Modal.Title>Xác nhận xóa</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Bạn có chắc muốn xóa {selectedProducts.name}?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleDelete}>
+              <FontAwesomeIcon icon={faCheck}/> Đồng ý
+          </Button>
+          <Button variant="secondary" onClick={handleCloseDelete}>
+              <FontAwesomeIcon icon={faTimes}/> Hủy
           </Button>
         </Modal.Footer>
       </Modal>
