@@ -9,31 +9,23 @@ import Allproduct from "./Pages/Allproduct";
 import ProductDetail from "./Pages/ProductDetails";
 import ProductAdd from "./Pages/ProductAdd";
 import Login from "./Pages/Login";
+import ProductEdit from "./Pages/ProductEdit";
 const App = () => {
     return (
         <BrowserRouter>
             <Routes>
-            <Route path="/" element={<Layout/>} >
-            <Route path="login" element={<Login/>} />
-                <Route index element={<Home/>} />
-                <Route path="products" element={<Allproduct/>} />
-                
-                <Route path="products/details/:id" element={<ProductDetail/>} />
+                <Route path="/" element={<Layout/>} >
+                <Route path="login" element={<Login/>} />
+                    <Route index element={<Home/>} />
+                    <Route path="products" element={<Allproduct/>} />
+                    
+                    <Route path="products/details/:id" element={<ProductDetail/>} />
 
-                <Route path="products/add" element={<ProductAdd/>} />
+                    <Route path="products/add" element={<ProductAdd/>} />
 
-
-                
-            </Route>
-
-            {/* <Route path="/admin/" element={<LayoutAdmin/>}>
-                <Route path="accounts" element={<Accounts/>} />
-            </Route> */}
-
+                    <Route path="products/edit/:id" element={<ProductEdit/>} />
+                </Route>
             </Routes>
-
-
-            
         </BrowserRouter>
     );
 }

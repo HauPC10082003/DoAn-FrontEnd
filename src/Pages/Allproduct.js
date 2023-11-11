@@ -1,6 +1,7 @@
 import {
-  faDeleteLeft,
+  faEdit,
   faPlus,
+  faTrash,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,6 +27,12 @@ const Allproduct = () => {
 
     console.log(user);
   };
+
+  const handleDelete = (id) =>
+  {
+    axiosClient.delete(`/products/${id}`);
+  } 
+
   return (
     <>
             <Link to="/products/add" className="btn btn-success mb-2">
@@ -50,15 +57,15 @@ const Allproduct = () => {
                     <div className="grid-cell">Stock: {item.stock}</div>
                     
                     <div className="grid-cell">
-                      <button className="btn btn-info" onClick={() => handleShow(item)}>
+                      <Button className="btn btn-info" onClick={() => handleShow(item)}>
                         <FontAwesomeIcon icon={faUser} />
-                      </button>
-                      <button className="btn btn-success" onClick={() => handleShow(item)}>
-                        Edit
-                      </button>
-                      <button className="btn btn-danger" onClick={() => handleShow(item)}>
-                        <FontAwesomeIcon icon={faDeleteLeft} />
-                      </button>
+                      </Button>
+                      <Link to={`/products/edit/${item.id}`} className="btn btn-warning">
+                            <FontAwesomeIcon icon={faEdit} />
+                      </Link>
+                      <Button variant="danger" onClick={() => handleDelete(item.id)}>
+                        <FontAwesomeIcon icon={faTrash} />
+                      </Button> 
                     </div>
                   </div>
                 );
@@ -102,8 +109,6 @@ const Allproduct = () => {
                 <dd>{selectedProducts.description}</dd>
                 <dt>PRICE:</dt>
                 <dd>{selectedProducts.price}</dd>
-                <dt>DISCOUNT:</dt>
-                <dd>{selectedProducts.discountPercentage}</dd>
                 <dt>STOCK:</dt>
                 <dd>{selectedProducts.stock}</dd>
                 
@@ -124,6 +129,8 @@ const Allproduct = () => {
         
         </Modal.Footer>
       </Modal>
+
+      
     </>
   );
 };
